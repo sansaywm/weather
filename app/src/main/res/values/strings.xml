@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">weather</string>
+    <string name="city_management">Управление городами</string>
+    <string name="enter_location">Введите местоположение</string>
+    <string name="delete_city">Удалить город</string>
+    <string name="delete_city_message">Удалить этот город?</string>
+    <string name="close">Отмена</string>
+    <string name="delete">Удалить</string>
+    <string name="title_search">Поиск</string>
+    <string name="title_permission_message">Шаг 1</string>
+    <string name="title_power_saving">Шаг 2</string>
+    <string name="permission_message">Вам необходимо установить автостарт вручную, чтобы погода обновлялась без сбоев и после перезагрузки телефона. Пожалуйста, включите в следующем диалоге настроек.</string>
+    <string name="power_saving">Вам необходимо убрать все ограничения вручную, чтобы погода обновлялась в фоновом режиме. Пожалуйста, включите в следующем диалоге настроек.</string>
+</resources>

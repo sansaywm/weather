@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="md_dialog_frame_margin">16dp</dimen>
+    <dimen name="md_content_textsize">16sp</dimen>
+    <dimen name="md_title_frame_margin_bottom">20sp</dimen>
+    <dimen name="md_content_padding_bottom">16dp</dimen>
+    <dimen name="md_content_padding_top">16dp</dimen>
+    <dimen name="md_notitle_vertical_padding">16dp</dimen>
+</resources>
