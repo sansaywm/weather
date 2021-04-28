@@ -15,24 +15,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.work.Constraints
-import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkManager
 import com.vitstudio.weather.R
 import com.vitstudio.weather.data.entity.LocationModel
 import com.vitstudio.weather.databinding.FragmentWeatherBinding
 import com.vitstudio.weather.util.*
-import java.util.concurrent.TimeUnit
 
 class WeatherFragment : Fragment(), LocListenerInterface {
     private var _binding: FragmentWeatherBinding? = null
     private val binding: FragmentWeatherBinding
         get() = _binding!!
+
     private lateinit var viewModel: WeatherViewModel
     private lateinit var mToolbar: Toolbar
     private lateinit var locationManager: LocationManager
     private lateinit var myLocationListener: MyLocationListener
-    lateinit var permissionHelper: PermissionHelper
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,27 +45,17 @@ class WeatherFragment : Fragment(), LocListenerInterface {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mToolbar = APP_ACTIVITY.mToolbar
-        permissionHelper = PermissionHelper(requireContext())
         initButtonAdd()
         initLocation()
         loadWeather()
-
     }
 
     override fun onStart() {
         super.onStart()
         visibilityToolbar()
         APP_ACTIVITY.buttonBack.enableDrawer()
-        when (startAppCount(requireContext())) {
-            1 -> {
-                setOneTimeWorkRequest()
-                permissionHelper.permissionAutoStartInit()
-            }
-            2 -> {
-                permissionHelper.permissionPowerSavingInit()
-            }
-        }
     }
+
 
     private fun initButtonAdd() {
         binding.buttonAdd.setOnClickListener {
@@ -122,16 +109,5 @@ class WeatherFragment : Fragment(), LocListenerInterface {
 
     override fun getLocation(location: Location) {
         viewModel.setLocation(LocationModel(location.longitude, location.latitude))
-    }
-
-    private fun setOneTimeWorkRequest() {
-        val workManager = WorkManager.getInstance(requireContext())
-        val constraints = Constraints.Builder()
-            .build()
-        val periodicWorkRequest =
-            PeriodicWorkRequest.Builder(WorkManagerHelper::class.java, 15, TimeUnit.MINUTES)
-                .setConstraints(constraints)
-                .build()
-        workManager.enqueue(periodicWorkRequest)
     }
 }

@@ -1,9 +1,7 @@
 package com.vitstudio.weather.ui.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.RelativeLayout
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -15,13 +13,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.vitstudio.weather.R
 import com.vitstudio.weather.databinding.FragmentSearchWeatherBinding
 import com.vitstudio.weather.ui.weatheradd.WeatherAddFragment
-import com.vitstudio.weather.util.APP_ACTIVITY
-import com.vitstudio.weather.util.OnItemClickListener
-import com.vitstudio.weather.util.OnQueryTextListener
-
-const val KEY_CITY_NAME = "city name"
-const val KEY_ADD_NEW = "add new"
-const val KEY_CITY_KEY = "city key"
+import com.vitstudio.weather.util.*
 
 class SearchWeatherFragment : Fragment(), OnItemClickListener {
     private var _binding: FragmentSearchWeatherBinding? = null
@@ -92,7 +84,7 @@ class SearchWeatherFragment : Fragment(), OnItemClickListener {
     }
 
     private fun deleteWeather() {
-        itemTouchHelper = com.vitstudio.weather.util.ItemTouchHelper { viewHolder ->
+        itemTouchHelper = ItemTouchHelper { viewHolder ->
             MaterialDialog(requireContext())
                 .show {
                     title(R.string.delete_city)
@@ -142,7 +134,7 @@ class SearchWeatherFragment : Fragment(), OnItemClickListener {
                     cardSearchCity.setOnClickListener {
                         bundle.putString(KEY_CITY_NAME, weather.name)
                         bundle.putBoolean(KEY_ADD_NEW, true)
-                        bundle.putLong(KEY_CITY_KEY, weather.id!!)
+                        bundle.putLong(KEY_CITY_ID, weather.id!!)
                         fragment.arguments = bundle
                         val nav = findNavController()
                         nav.navigate(R.id.weatherAddFragment, bundle)

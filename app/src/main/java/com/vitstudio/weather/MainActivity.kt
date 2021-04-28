@@ -1,15 +1,10 @@
-package com.vitstudio.weather.ui
+package com.vitstudio.weather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.work.Constraints
-import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkManager
-import com.vitstudio.weather.R
 import com.vitstudio.weather.databinding.ActivityMainBinding
 import com.vitstudio.weather.util.*
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     lateinit var mToolbar: androidx.appcompat.widget.Toolbar
@@ -24,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         mToolbar = binding.mainToolbar
         setSupportActionBar(mToolbar)
         buttonBack = ButtonBack(this, mToolbar)
-
         APP_ACTIVITY = this
     }
 }

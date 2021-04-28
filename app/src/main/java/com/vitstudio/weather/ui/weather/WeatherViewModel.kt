@@ -11,11 +11,14 @@ import com.vitstudio.weather.data.entity.LocationModel
 import com.vitstudio.weather.data.entity.Weather
 import com.vitstudio.weather.domain.*
 import com.vitstudio.weather.util.launchIo
+import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class WeatherViewModel(
-    private val app: Application) : AndroidViewModel(app) {
+class WeatherViewModel
+@Inject constructor(
+    private val app: Application,
+) : AndroidViewModel(app) {
     private val loadWeathersFromDatabaseUseCase = LoadWeathersFromDatabaseUseCase()
     private val saveWeatherToDatabaseUseCase = SaveWeatherToDatabaseUseCase()
     private val updateWeathersDatabaseUseCase = UpdateWeatherDatabaseUseCase()

@@ -35,4 +35,5 @@ ext {
     room_version = '2.2.6'
     picasso_version = '2.71828'
     material_dialog_version = '3.3.0'
+    swipedecorator_version = '1.2.3'
 }

@@ -4,7 +4,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.os.Bundle
 
-class MyLocationListener() : LocationListener {
+class MyLocationListener : LocationListener {
     lateinit var locListenerInterface: LocListenerInterface
 
     override fun onLocationChanged(location: Location?) {

@@ -1,7 +1,7 @@
 package com.vitstudio.weather.util
 
 import androidx.appcompat.widget.Toolbar
-import com.vitstudio.weather.ui.MainActivity
+import com.vitstudio.weather.MainActivity
 
 class ButtonBack(private val mainActivity: MainActivity, private val toolbar: Toolbar) {
 

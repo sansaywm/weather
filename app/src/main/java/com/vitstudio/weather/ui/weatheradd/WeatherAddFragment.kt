@@ -11,10 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.vitstudio.weather.R
 import com.vitstudio.weather.databinding.FragmentWeatheraddBinding
-import com.vitstudio.weather.ui.search.KEY_ADD_NEW
-import com.vitstudio.weather.ui.search.KEY_CITY_KEY
-import com.vitstudio.weather.ui.search.KEY_CITY_NAME
 import com.vitstudio.weather.util.APP_ACTIVITY
+import com.vitstudio.weather.util.KEY_ADD_NEW
+import com.vitstudio.weather.util.KEY_CITY_ID
+import com.vitstudio.weather.util.KEY_CITY_NAME
 
 class WeatherAddFragment : Fragment() {
     private var _binding: FragmentWeatheraddBinding? = null
@@ -49,7 +49,7 @@ class WeatherAddFragment : Fragment() {
             binding.buttonAddUsersGroup.apply {
                 visibility = View.VISIBLE
                 setOnClickListener {
-                    val id = arguments?.getLong(KEY_CITY_KEY)
+                    val id = arguments?.getLong(KEY_CITY_ID)
                     viewModel.addWeatherToDatabase(id!!)
                     val nav = findNavController()
                     nav.popBackStack(R.id.weatherAddFragment, true)
